@@ -20,7 +20,7 @@ export default function BarChart(props: Props) {
 
   const scaleY = d3.scaleBand()
     .domain(chartData.map(d => d.label))
-    .range([20, chartData.length > 55 ? chartData.length * 12 : Config.ChartHeight])
+    .range([20, chartData.length > 50 ? chartData.length * 12 : Config.ChartHeight])
 
   return (
     <>
