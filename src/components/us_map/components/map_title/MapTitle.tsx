@@ -7,7 +7,9 @@ export default function MapTitle() {
   return (
     <Title>
     {
-      data.selectedState ? `${data.selectedState} Unemployment Rate` : 'US Unemployment Rate By State'
+      data.selectedState
+        ? `${data.selectedStateName} Unemployment Rate`
+        : 'US Unemployment Rate By State'
     }
   </Title>
   );

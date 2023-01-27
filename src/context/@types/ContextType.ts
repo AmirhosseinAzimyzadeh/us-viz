@@ -1,7 +1,9 @@
 export interface Data {
   selectedState: string | null;
+  selectedStateName: string | null;
+
   hoverState: string | null;
-  selectedYear: number | null;
+  hoverStateName: string | null;
 }
 
 type ContextType = [

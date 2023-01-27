@@ -3,8 +3,10 @@ import ContextType, { Data } from "./@types/ContextType";
 
 const emptyContext: Data = {
   selectedState: null,
+  selectedStateName: null,
+
   hoverState: null,
-  selectedYear: null,
+  hoverStateName: null,
 }
 
 export { emptyContext };

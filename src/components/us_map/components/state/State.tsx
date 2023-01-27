@@ -16,11 +16,11 @@ export default function State(props: Props) {
   return (
     <path
       onClick={() => {
-        if (data.selectedState === stateData.id) {
-          setData((p) => ({ ...p, selectedState: null }))
-          return;
-        }
-        setData((p) => ({ ...p, selectedState: stateData.id }))
+        setData((p) => ({
+          ...p,
+          selectedState: stateData.id,
+          selectedStateName: stateData.properties.name,
+        }))
         const svg = d3.select(`#${Config.ElementIDs.Map}`);
         const [[x0, y0], [x1, y1]] = path.bounds(stateData);
         svg.transition().duration(Config.TransitionDuration).call(
@@ -33,10 +33,18 @@ export default function State(props: Props) {
         );
       }}
       onMouseEnter={() => {
-        setData((p) => ({ ...p, hoverState: stateData.id }))
+        setData((p) => ({
+          ...p,
+          hoverState: stateData.id,
+          hoverStateName: stateData.properties.name,
+        }))
       }}
       onMouseLeave={() => {
-        setData((p) => ({ ...p, hoverState: null }))
+        setData((p) => ({
+          ...p,
+          hoverState: null,
+          hoverStateName: null,
+        }))
       }}
       opacity={data.selectedState && data.selectedState !== stateData.id ? 0.5 : 1}
       fill={(data.hoverState === stateData.id) ? Config.HighlightColor : fillColor}
