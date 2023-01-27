@@ -33,10 +33,12 @@ export default function USMap() {
   return (
     <div className={styles.map_container}>
       <MapTitle />
+
       <NationContainer>
         <States us={mapData.data} />
         <Counties us={mapData.data} />
        </NationContainer>
+
       <ZoomOutButton />
     </div>
   );

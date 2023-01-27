@@ -7,6 +7,9 @@ const emptyContext: Data = {
 
   hoverState: null,
   hoverStateName: null,
+
+  data: null,
+  year: '2014',
 }
 
 export { emptyContext };

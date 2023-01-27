@@ -5,13 +5,28 @@ import { zoom } from "../../USMap";
 
 interface Props {
   stateData: any;
-  fillColor: string;
+  rates: { [countyName: string]: number } | undefined;
 }
 
 export default function State(props: Props) {
   const [data, setData] = useData();
-  const { stateData, fillColor } = props;
+  const { stateData, rates } = props;
   const path = d3.geoPath();
+
+  // average rate of the state
+  let avgRate = 0;
+  let fillColor = 'yellow';
+  if (rates) {
+    const rateValues = Object.values(rates).filter((r) => r !== undefined);
+    if (rateValues.length > 0) {
+      avgRate = rateValues.reduce((a, b) => a + b, 0) / rateValues.length;
+      fillColor = Config.Colors[Math.round(avgRate)];
+    }
+  }
+
+  if (isNaN(avgRate)) {
+    fillColor = 'yellow';
+  }
 
   return (
     <path

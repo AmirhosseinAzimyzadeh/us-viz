@@ -8,6 +8,10 @@ interface Props {
 
 export default function Counties(props: Props) {
   const [data] = useData();
+  if (!data.data || !data.selectedStateName) return null;
+  const rates = data.data[data.year]
+    .Annual[data.selectedStateName]
+  
   const { us } = props;
 
   return (
@@ -23,6 +27,7 @@ export default function Counties(props: Props) {
                 <County
                   key={d.id}
                   countyData={d}
+                  rate={rates ? rates['Unemployment Rate'][d.properties.name + ' County'] : undefined}
                 />
               ))
             }
