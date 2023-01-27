@@ -19,6 +19,8 @@ const Config = {
   },
 
   TransitionDuration: 750,
+  MapWidth: 960,
+  MapHeight: 600,
 }
 
 export default Config;
