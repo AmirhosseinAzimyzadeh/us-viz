@@ -42,8 +42,8 @@ export default function State(props: Props) {
           // @ts-ignore
           zoom.transform,
           d3.zoomIdentity
-            .translate(960 / 2, 600 / 2)
-            .scale(Math.min(8, 0.9 / Math.max((x1 - x0) / 960, (y1 - y0) / 600)))
+            .translate(Config.MapWidth / 2, Config.MapHeight / 2)
+            .scale(Math.min(8, 0.9 / Math.max((x1 - x0) / Config.MapWidth, (y1 - y0) / Config.MapHeight)))
             .translate(-(x0 + x1) / 2, -(y0 + y1) / 2),
         );
       }}

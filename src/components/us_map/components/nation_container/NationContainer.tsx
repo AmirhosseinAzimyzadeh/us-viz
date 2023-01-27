@@ -11,8 +11,8 @@ export default function NationContainer(props: Props) {
   return (
     <svg
       id={Config.ElementIDs.Map}
-      width="960"
-      height="600"
+      width={Config.MapWidth}
+      height={Config.MapHeight}
       viewBox="0 0 960 600"
       style={{
         width: "100%",
