@@ -1,0 +1,15 @@
+.zoom_out {
+  position: absolute;
+  bottom: 14px;
+  left: 14px;
+  background-color: rgba(0,0,0,0.6);
+  color: white;
+  border: none;
+  padding: 5px 10px;
+  border-radius: 5px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  z-index: 1;
+}

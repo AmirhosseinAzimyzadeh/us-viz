@@ -1,0 +1,4 @@
+.map_container {
+  position: relative;
+  width: calc(60% - 20px);
+}
