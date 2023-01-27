@@ -1,5 +1,6 @@
 import * as d3 from "d3";
 import Config from "../../../../config/Config";
+import useData from "../../../../context/hooks/useData";
 
 interface Props {
   countyData: any;
@@ -7,6 +8,7 @@ interface Props {
 }
 
 export default function County(props: Props) {
+  const [{ hoverCounty }, setData] = useData();
   const { countyData } = props;
   const path = d3.geoPath();
 
@@ -18,9 +20,21 @@ export default function County(props: Props) {
 
   return (
     <path
-      fill={color}
+      fill={hoverCounty === props.countyData.properties.name ? Config.HighlightColor : color}
       d={String(path(countyData))}
-      stroke={'rgba(0,0,0,0.2)'}
+      stroke="white"
+      onMouseEnter={() => {
+        setData((p) => ({
+          ...p,
+          hoverCounty: countyData.properties.name,
+        }));
+      }}
+      onMouseLeave={() => {
+        setData((p) => ({
+          ...p,
+          hoverCounty: null,
+        }));
+      }}
     />
   );
 }

@@ -9,7 +9,10 @@ const emptyContext: Data = {
   hoverStateName: null,
 
   data: null,
+  populationData: null,
   year: '2014',
+
+  hoverCounty: null,
 }
 
 export { emptyContext };

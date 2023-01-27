@@ -37,7 +37,7 @@ export default function USMap() {
       <NationContainer>
         <States us={mapData.data} />
         <Counties us={mapData.data} />
-       </NationContainer>
+      </NationContainer>
 
       <ZoomOutButton />
     </div>

@@ -64,7 +64,7 @@ export default function State(props: Props) {
       opacity={data.selectedState && data.selectedState !== stateData.id ? 0.5 : 1}
       fill={(data.hoverState === stateData.id) ? Config.HighlightColor : fillColor}
       d={String(path(stateData))}
-      stroke={'rgba(0,0,0,0.2)'}
+      stroke="white"
     />
   );
 }

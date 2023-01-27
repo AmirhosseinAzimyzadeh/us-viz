@@ -1,4 +1,17 @@
-interface UnemploymentDataAnnually {
+export interface PopulationData {
+  STATE: string;
+  STNAME: string;
+  COUNTY: string;
+  CTYNAME: string;
+  POPESTIMATE2013: string;
+  POPESTIMATE2014: string;
+  POPESTIMATE2015: string;
+  POPESTIMATE2016: string;
+  [key: string]: string;
+}
+
+
+export interface UnemploymentDataAnnually {
   [year: string]: {
     Annual: {
       [stateName: string]: {
@@ -18,7 +31,10 @@ export interface Data {
   hoverStateName: string | null;
 
   data: null | UnemploymentDataAnnually;
+  populationData: null | Array<PopulationData>,
   year: string;
+
+  hoverCounty: null | string,
 }
 
 type ContextType = [

@@ -11,7 +11,7 @@ const Config = {
     '#023858', // 80 - 90%
   ],
 
-  HighlightColor: '#ff0000',
+  HighlightColor: 'red',
 
   ElementIDs: {
     Map: 'map',
@@ -21,6 +21,9 @@ const Config = {
   TransitionDuration: 750,
   MapWidth: 960,
   MapHeight: 600,
+
+  ChartHeight: 400,
+  ChartWidth: 450,
 }
 
 export default Config;

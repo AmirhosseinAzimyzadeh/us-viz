@@ -10,7 +10,7 @@ export default function ZoomOutButton() {
     <button
       className={styles.zoom_out}
       onClick={() => {
-        setData((p) => ({ ...p, selectedState: null }));
+        setData((p) => ({ ...p, selectedState: null, selectedStateName: null }));
       }}
     >
       Zoom Out
