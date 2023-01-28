@@ -1,5 +1,6 @@
 import * as d3 from "d3";
 import { useEffect, useRef } from "react";
+import Config from "../../../../config/Config";
 
 interface Props {
   scale: d3.ScaleLinear<number, number>;
@@ -21,6 +22,17 @@ export default function PopulationAxis(props: Props) {
   }, [gRef, props.scale])
 
   return (
-    <g ref={gRef} transform={props.transform} />
+    <g transform={props.transform}>
+      {/** White background for the population axis */}
+      <rect
+        x={-100}
+        y={0}
+        width={Config.ChartWidth + 100}
+        height={80}
+        fill="white"
+      />
+      {/** Population axis */}
+      <g ref={gRef} />
+    </g>
   );
 }
