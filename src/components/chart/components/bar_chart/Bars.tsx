@@ -15,18 +15,8 @@ export default function Bars(props: Props) {
   return (
     <g transform="translate(100, -20)">
       {props.data.map(({ value, label, stateId }, i) => (
-        <rect
+        <g
           key={i}
-          x={props.scaleX(Number(value))}
-          y={props.scaleY(label)}
-          width={props.scaleX(value)}
-          transform={`translate(-${props.scaleX(value)},0)`}
-          height={props.scaleY.bandwidth()}
-          fill={
-            hoverStateName === label || hoverCounty === label.replace(' County', '').replace(' Parish', '')
-            ? Config.HighlightColor
-            : Config.Colors[Math.ceil(Config.Colors.length / 2)]
-          }
           onMouseEnter={() => {
             if (label.includes(' County') || label.includes(' Parish')) {
               setData((p) => ({ ...p, hoverCounty: label.replace(' County', '').replace(' Parish', '')}))
@@ -46,7 +36,34 @@ export default function Bars(props: Props) {
               hoverCounty: null,
             }));
           }}
-        />
+        >
+          {/** Base Rect */}
+          <rect
+            x={props.scaleX(Number(value))}
+            y={props.scaleY(label)}
+            width={props.scaleX(value)}
+            transform={`translate(-${props.scaleX(value)},0)`}
+            height={props.scaleY.bandwidth()}
+            fill={
+              hoverStateName === label || hoverCounty === label.replace(' County', '').replace(' Parish', '')
+              ? Config.HighlightColor
+              : Config.Colors[Math.ceil(Config.Colors.length / 2)]
+            }
+          />
+          {/** White Rect */}
+          <rect
+            x={props.scaleX(Number(value))}
+            y={props.scaleY(label)}
+            width={Config.ChartWidth - props.scaleX(value)}
+            height={props.scaleY.bandwidth()}
+            fill={
+              hoverStateName === label || hoverCounty === label.replace(' County', '').replace(' Parish', '')
+              ? 'rgba(0,0,0,0.1)'
+              : 'transparent'
+            }
+            opacity={0.5}
+          />
+        </g>
       ))}
     </g>
   );
