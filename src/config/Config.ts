@@ -27,6 +27,9 @@ const Config = {
   ChartWidth: 700,
   ChartHeight: 700,
 
+  BarThicknessInScrollMode: 20,
+  ScrollThreshold: 55, // items in bar chart
+
   dataPath: {
     populationCSV: isInDevMode
       ? process.env.PUBLIC_URL + '/data/us_population.csv'
