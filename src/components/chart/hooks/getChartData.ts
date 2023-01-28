@@ -2,7 +2,7 @@ import { Data } from "../../../context/@types/ContextType";
 
 export default function getChartData(
   data: Data,
-): Array<{ label: string, value: number }> {
+): Array<{ label: string, value: number, countyId: number, stateId: number }> {
   if (!data.populationData) return [];
 
   const { populationData, selectedStateName, year } = data;
@@ -12,6 +12,8 @@ export default function getChartData(
       .map((d) => ({
         label: d.CTYNAME,
         value: Number(d[`POPESTIMATE${year}`]),
+        countyId: Number(d.COUNTY),
+        stateId: Number(d.STATE),
       }));
   }
 
@@ -19,6 +21,8 @@ export default function getChartData(
     .map((d) => ({
       label: d.STNAME,
       value: Number(d[`POPESTIMATE${year}`]),
+      countyId: Number(d.COUNTY),
+      stateId: Number(d.STATE),
     }));
 
 }

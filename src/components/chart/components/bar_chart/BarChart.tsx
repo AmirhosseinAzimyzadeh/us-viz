@@ -5,7 +5,7 @@ import LabelAxis from "./LabelAxis";
 import PopulationAxis from "./PopulationAxis";
 
 interface Props {
-  chartData: Array<{ label: string, value: number }>
+  chartData: Array<{ label: string, value: number, countyId: number, stateId: number }>
 }
 
 export default function BarChart(props: Props) {
@@ -20,7 +20,7 @@ export default function BarChart(props: Props) {
 
   const scaleY = d3.scaleBand()
     .domain(chartData.map(d => d.label))
-    .range([20, chartData.length > 50 ? chartData.length * 12 : Config.ChartHeight])
+    .range([20, chartData.length > 55 ? chartData.length * 12 : Config.ChartHeight])
 
   return (
     <>

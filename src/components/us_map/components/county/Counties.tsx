@@ -11,6 +11,9 @@ export default function Counties(props: Props) {
   if (!data.data || !data.selectedStateName) return null;
   const rates = data.data[data.year]
     .Annual[data.selectedStateName]
+
+  let suffix = ' County';
+  if (data.selectedStateName === 'Louisiana') suffix = ' Parish';
   
   const { us } = props;
 
@@ -27,7 +30,7 @@ export default function Counties(props: Props) {
                 <County
                   key={d.id}
                   countyData={d}
-                  rate={rates ? rates['Unemployment Rate'][d.properties.name + ' County'] : undefined}
+                  rate={rates ? rates['Unemployment Rate'][d.properties.name + suffix] : undefined}
                 />
               ))
             }

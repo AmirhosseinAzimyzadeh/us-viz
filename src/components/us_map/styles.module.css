@@ -1,4 +1,10 @@
 .map_container {
   position: relative;
-  width: calc(60% - 20px);
+  width: calc(50% - 20px);
+}
+
+@media only screen and (max-width: 800px) {
+  .map_container {
+    width: 100%;
+  }
 }

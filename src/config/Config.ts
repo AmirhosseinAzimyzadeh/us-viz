@@ -24,8 +24,8 @@ const Config = {
   MapWidth: 960,
   MapHeight: 600,
 
-  ChartHeight: 400,
-  ChartWidth: 450,
+  ChartWidth: 700,
+  ChartHeight: 700,
 
   dataPath: {
     populationCSV: isInDevMode

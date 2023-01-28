@@ -15,7 +15,7 @@ export default function LabelAxis(props: Props) {
     d3.select(gRef.current)
       .call(
         d3.axisLeft(props.scale)
-        .tickFormat((d) => (d.replace("County", "")))
+        .tickFormat((d) => (d.replace("County", "").replace("Parish", "").trim()))
       );
 
   }, [gRef, props.scale])
