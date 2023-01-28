@@ -19,7 +19,6 @@ export default function States(props: Props) {
         /** @ts-ignore */
         topojson.feature(us, us.objects.states)['features'].map((d: any) => {
           const stateRates = rates[d.properties.name];
-
           return (
             <State
               key={d.id}
