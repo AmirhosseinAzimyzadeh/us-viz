@@ -1,7 +1,7 @@
 import * as d3 from "d3";
 import Config from "../../../../config/Config";
 import useData from "../../../../context/hooks/useData";
-import { zoom } from "../../USMap";
+import zoomInState from "../../hooks/zoomInState";
 
 interface Props {
   stateData: any;
@@ -35,17 +35,8 @@ export default function State(props: Props) {
           ...p,
           selectedState: stateData.id,
           selectedStateName: stateData.properties.name,
-        }))
-        const svg = d3.select(`#${Config.ElementIDs.Map}`);
-        const [[x0, y0], [x1, y1]] = path.bounds(stateData);
-        svg.transition().duration(Config.TransitionDuration).call(
-          // @ts-ignore
-          zoom.transform,
-          d3.zoomIdentity
-            .translate(Config.MapWidth / 2, Config.MapHeight / 2)
-            .scale(Math.min(8, 0.9 / Math.max((x1 - x0) / Config.MapWidth, (y1 - y0) / Config.MapHeight)))
-            .translate(-(x0 + x1) / 2, -(y0 + y1) / 2),
-        );
+        }));
+        zoomInState(stateData);
       }}
       onMouseEnter={() => {
         setData((p) => ({
