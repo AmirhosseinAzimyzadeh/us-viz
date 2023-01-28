@@ -1,5 +1,6 @@
 import * as d3 from 'd3';
 import { useEffect, useState } from "react";
+import Config from '../../../config/Config';
 
 interface MapData {
   data: any;
@@ -13,7 +14,7 @@ export default function useMapData() {
   });
 
   useEffect(() => {
-    d3.json('/data/us_c.json')
+    d3.json(Config.dataPath.usMap)
       .then((result) => {
         setMapData((p) => ({ ...p, data: result, loading: false }));
       }).catch((e) => console.error(e));

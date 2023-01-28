@@ -1,3 +1,5 @@
+const isInDevMode = !process.env.NODE_ENV || process.env.NODE_ENV === 'development';
+
 const Config = {
   Colors: [
     '#fff7fb', // 0 - 10%
@@ -24,6 +26,18 @@ const Config = {
 
   ChartHeight: 400,
   ChartWidth: 450,
+
+  dataPath: {
+    populationCSV: isInDevMode
+      ? process.env.PUBLIC_URL + '/data/us_population.csv'
+      : 'https://raw.githubusercontent.com/AmirhosseinAzimyzadeh/us-viz/main/public/data/us_population.csv',
+    usMap: isInDevMode
+      ? process.env.PUBLIC_URL + '/data/us_c.json'
+      : 'https://raw.githubusercontent.com/AmirhosseinAzimyzadeh/us-viz/main/public/data/us_c.json',
+    usUnemploymentRate: isInDevMode
+      ? process.env.PUBLIC_URL + '/data/u_rate.json'
+      : 'https://raw.githubusercontent.com/AmirhosseinAzimyzadeh/us-viz/main/public/data/u_rate.json',
+  }
 }
 
 export default Config;
