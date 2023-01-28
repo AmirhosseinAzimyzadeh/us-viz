@@ -13,7 +13,7 @@ export default function ZoomOutButton() {
         setData((p) => ({ ...p, selectedState: null, selectedStateName: null }));
       }}
     >
-      Zoom Out
+      Back to US
     </button>
   );
 }

@@ -1,12 +1,14 @@
 import * as d3 from "d3";
 import { useEffect } from "react";
 import Config from "../../../config/Config";
-import { zoom } from "../USMap";
+import { zoom } from "./zoomInState";
 
 export default function useZoomControl(
   loading: boolean,
   selectedState: string | null
 ) {
+
+  // Handle zoom out
   useEffect(() => {
     if (loading || selectedState) return;
     const svg = d3.select(`#${Config.ElementIDs.Map}`);
