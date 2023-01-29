@@ -20,7 +20,7 @@ const Config = {
     Chart: 'chart',
   },
 
-  TransitionDuration: 750,
+  TransitionDuration: 750, // used in zoom function
   MapWidth: 960,
   MapHeight: 600,
 
