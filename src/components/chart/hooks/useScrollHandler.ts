@@ -2,6 +2,7 @@ import * as d3 from "d3";
 import { useEffect } from "react";
 import Config from "../../../config/Config";
 import useData from "../../../context/hooks/useData";
+import getTranslateValues from "../utils/getTranslateValues";
 
 export default function useScrollHandler(
   gElement: SVGGElement | null,
@@ -12,18 +13,11 @@ export default function useScrollHandler(
     if (!gElement) return;
 
     d3.select(gElement)
-      .style('transition', 'transform 0.5s ease-in-out')
       .on('wheel', function (e) {
         const { deltaY } = e;
         // previous translate value
-        let previousTranslate = d3.select(this).attr('transform');
-        if (!previousTranslate) previousTranslate = 'translate(0, 0)';
-        const [xTranslate, yTranslate] = previousTranslate
-          .split('(')[1]
-          .split(')')[0]
-          .split(',')
-          .map((d) => Number(d));
-
+        const { yTranslate } = getTranslateValues(this);
+        d3.select(this).style('transition', 'transform 0.1s linear');
         
         // height of the element
         let height = d3.select(this).node()?.getBoundingClientRect().height;
