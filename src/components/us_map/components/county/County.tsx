@@ -1,6 +1,7 @@
 import * as d3 from "d3";
 import Config from "../../../../config/Config";
 import useData from "../../../../context/hooks/useData";
+import scrollChartToCounty from "./utils/scrollChartToCounty";
 
 interface Props {
   countyData: any;
@@ -24,6 +25,7 @@ export default function County(props: Props) {
       d={String(path(countyData))}
       stroke="white"
       onMouseEnter={() => {
+        scrollChartToCounty(countyData.properties.name);
         setData((p) => ({
           ...p,
           hoverCounty: countyData.properties.name,
