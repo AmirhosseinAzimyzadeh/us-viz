@@ -33,7 +33,7 @@ export default function BarChart(props: Props) {
 
   return (
     <>
-      <g ref={verticalAxisRef}>
+      <g id={Config.ElementIDs.ChartVerticalAxis} ref={verticalAxisRef}>
           <LabelAxis
             scale={scaleY}
             transform={`translate(100, -20)`}
