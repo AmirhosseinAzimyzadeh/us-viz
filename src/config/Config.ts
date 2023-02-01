@@ -18,6 +18,7 @@ const Config = {
   ElementIDs: {
     Map: 'map',
     Chart: 'chart',
+    ChartVerticalAxis: 'chart-vertical-axis',
   },
 
   TransitionDuration: 750, // used in zoom function
