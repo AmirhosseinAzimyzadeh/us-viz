@@ -16,7 +16,12 @@ export default function Bars(props: Props) {
     <g transform="translate(100, -20)">
       {props.data.map(({ value, label, stateId }, i) => (
         <g
+          data-chart-index={i}
           key={i}
+          id={label.includes(' County') || label.includes(' Parish')
+            ? label.replace(' County', '').replace(' Parish', '')
+            : String(stateId).length === 1 ? `0${stateId}` : String(stateId)
+          }
           onMouseEnter={() => {
             if (label.includes(' County') || label.includes(' Parish')) {
               setData((p) => ({ ...p, hoverCounty: label.replace(' County', '').replace(' Parish', '')}))
@@ -58,7 +63,7 @@ export default function Bars(props: Props) {
             height={props.scaleY.bandwidth()}
             fill={
               hoverStateName === label || hoverCounty === label.replace(' County', '').replace(' Parish', '')
-              ? 'rgba(0,0,0,0.1)'
+              ? 'rgba(0,0,0,0.3)'
               : 'transparent'
             }
             opacity={0.5}
